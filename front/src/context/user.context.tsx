@@ -1,0 +1,36 @@
+"use client";
+
+import { createContext, useContext, useReducer } from "react";
+import UserReducer from "./user.reducer";
+import { IUSER } from "@/models/types";
+
+const INITIAL_STATE = {
+  user: null,
+  isLoggedIn: false,
+  
+};
+
+const UserContext = createContext(INITIAL_STATE);
+
+export const useUserContext = () => useContext(UserContext);
+
+export default function UserProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE);
+
+  return (
+    <UserContext.Provider
+      value={{
+        ...state,
+        logIn(user: IUSER) {
+          dispatch({ type: "LOG_IN", payload: user });
+        },
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+}
