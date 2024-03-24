@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.show-modal-class {
+  opacity: 0;
+  scale: 0.45;
+  animation: show-modal 0.28s ease-out forwards;
+}
+
+@keyframes show-modal {
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

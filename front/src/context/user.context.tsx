@@ -7,7 +7,6 @@ import { IUSER } from "@/models/types";
 const INITIAL_STATE = {
   user: null,
   isLoggedIn: false,
-  
 };
 
 const UserContext = createContext(INITIAL_STATE);

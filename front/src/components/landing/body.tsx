@@ -1,8 +1,8 @@
 import Link from "next/link";
-import DollarSignIcon from "../../icons/dolar.icon";
-import CreditCardIcon from "../../icons/credit-card.icon";
-import FileArchiveIcon from "../../icons/file-archive.icon";
-import BarChartIcon from "../../icons/bar-char.icon";
+import DollarSignIcon from "../icons/dolar.icon";
+import CreditCardIcon from "../icons/credit-card.icon";
+import FileArchiveIcon from "../icons/file-archive.icon";
+import BarChartIcon from "../icons/bar-char.icon";
 
 export default function Body() {
   return (
