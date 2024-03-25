@@ -10,10 +10,14 @@ export default function Modal({
 }) {
   return (
     <div
-      className={`content-center min-h-dvh fixed w-full bg-[rgba(0,0,0,.6)] ${className ?? ''}`}
+      className={`z-50 content-center min-h-dvh fixed w-full bg-[rgba(0,0,0,.6)] ${
+        className ?? ""
+      }`}
       onClick={onClick}
     >
-      <div className="w-fit mx-auto" onClick={(e) => e.stopPropagation()}>{children}</div>
+      <div className="w-fit mx-auto" onClick={(e) => e.stopPropagation()}>
+        {children}
+      </div>
     </div>
   );
 }

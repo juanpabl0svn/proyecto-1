@@ -11,7 +11,7 @@ import Modal from "./modal";
 export default function Header() {
   const { isLoggedIn } = useUserContext();
 
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
