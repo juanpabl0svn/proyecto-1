@@ -22,8 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={theme}>
       <body className={inter.className}>
-        <UserProvider>{children}</UserProvider>
-        <ChatBot />
+        <UserProvider>
+          {children}
+          <ChatBot />
+        </UserProvider>
       </body>
     </html>
   );

@@ -3,6 +3,11 @@ export default function UserReducer(
   action: { type: string; payload?: any }
 ) {
   switch (action.type) {
+    case "ADD_MESSAGE":
+      return {
+        ...state,
+        messages: [...state.messages, action.payload],
+      };
     case "LOG_IN":
       return {
         ...state,
