@@ -14,13 +14,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
-const app_service_1 = require("./app.service");
 let AppController = class AppController {
-    constructor(appService) {
-        this.appService = appService;
-    }
+    constructor() { }
     getHello(res) {
-        return res.status(common_1.HttpStatus.METHOD_NOT_ALLOWED);
+        return res.status(common_1.HttpStatus.METHOD_NOT_ALLOWED).json({ message: 'Method not allowed' });
     }
     getHello2(req, res) {
         const { id } = req.params;
@@ -48,6 +45,6 @@ __decorate([
 ], AppController.prototype, "getHello2", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [app_service_1.AppService])
+    __metadata("design:paramtypes", [])
 ], AppController);
 //# sourceMappingURL=app.controller.js.map
