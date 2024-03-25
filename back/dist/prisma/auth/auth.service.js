@@ -9,23 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppController = void 0;
+exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
-let AppController = class AppController {
-    constructor() { }
-    alive() {
-        return 'I am alive!';
+const prisma_service_1 = require("../prisma.service");
+let AuthService = class AuthService {
+    constructor(prisma) {
+        this.prisma = prisma;
+    }
+    async getUserById(id) {
+        return this.prisma.user.findMany();
+    }
+    async createUser(user) {
+        return this.prisma.user.create({ data: user });
     }
 };
-exports.AppController = AppController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], AppController.prototype, "alive", null);
-exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [])
-], AppController);
-//# sourceMappingURL=app.controller.js.map
+exports.AuthService = AuthService;
+exports.AuthService = AuthService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
+], AuthService);
+//# sourceMappingURL=auth.service.js.map
