@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import UserProvider from "@/context/user.context";
 import { cookies } from "next/headers";
+import ChatBot from "@/components/chat/chat-bot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className={theme}>
       <body className={inter.className}>
         <UserProvider>{children}</UserProvider>
+        <ChatBot />
       </body>
     </html>
   );

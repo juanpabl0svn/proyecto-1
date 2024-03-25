@@ -1,7 +1,12 @@
-export default function LogIn() {
+export default function LogIn({ onClick }: { onClick: () => void }) {
   return (
     <aside className="w-[clamp(350px,30vw,450px)] show-modal-class">
-      <span className="absolute -right-2 -top-8 text-xl cursor-pointer opacity-70 hover:opacity-100">X</span>
+      <span
+        className="absolute -right-2 -top-8 text-xl cursor-pointer opacity-70 hover:opacity-100"
+        onClick={onClick}
+      >
+        X
+      </span>
       <div className="bg-gray-800 rounded-lg  overflow-hidden shadow-[0_10px_25px_-5px_rgba(0,_0,_0,_0.1),_0_10px_10px_-5px_rgba(0,_0,_0,_0.04)]">
         <div className="p-8">
           <h2 className="text-center text-3xl font-extrabold text-white">

@@ -17,7 +17,7 @@ export default function Header() {
     <>
       {showLogin && (
         <Modal onClick={() => setShowLogin(false)}>
-          <LogIn />
+          <LogIn onClick={() => setShowLogin(false)} />
         </Modal>
       )}
       <header className="bg-gray-700 body-font">
