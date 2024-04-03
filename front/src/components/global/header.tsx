@@ -7,11 +7,14 @@ import { useUserContext } from "@/context/user.context";
 import { useState } from "react";
 import LogIn from "../login/login";
 import Modal from "./modal";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const { isLoggedIn } = useUserContext();
 
   const [showLogin, setShowLogin] = useState(false);
+
+  const path = usePathname();
 
   return (
     <>
@@ -23,24 +26,38 @@ export default function Header() {
       <header className="bg-gray-700 body-font">
         <article className="flex items-center justify-between px-4 py-4 md:py-6">
           <section className="flex items-center space-x-4">
-            <Link className="flex items-center space-x-2 " href="#">
-              <FlagIcon className="h-6 w-6" />
-              <span className="font-semibold tracking-tighter">
+            <Link className="flex items-center space-x-2 " href="/">
+              <FlagIcon className="h-6 w-6 stroke-gray-100" />
+              <span className="font-semibold tracking-tighter text-gray-100">
                 Coop. Comultrasan
               </span>
             </Link>
-            <nav className="hidden md:flex items-center space-x-2 text-sm font-medium tracking-wide">
-              <Link className="text-gray-100 underline" href="#">
+            <nav className="flex items-center space-x-2 text-sm font-medium tracking-wide">
+              <Link
+                className={`text-gray-100 ${path === "/" ? "underline" : ""}`}
+                href="/"
+              >
                 Home
               </Link>
-              <Link className="text-gray-100" href="#">
+              <Link
+                className={`text-gray-100 ${path === "" ? "underline" : ""}`}
+                href="#"
+              >
                 Services
               </Link>
-              <Link className="text-gray-100" href="#">
+              <Link
+                className={`text-gray-100 ${path === "" ? "underline" : ""}`}
+                href="#"
+              >
                 About
               </Link>
-              <Link className="text-gray-100" href="#">
-                Contact
+              <Link
+                className={`text-gray-100 ${
+                  path === "/calendar" ? "underline" : ""
+                }`}
+                href="/calendar"
+              >
+                Calendar
               </Link>
             </nav>
           </section>

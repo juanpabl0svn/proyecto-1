@@ -13,11 +13,11 @@ export default function Calendar() {
       </article>
       <article className="grid grid-cols-7 mx-auto  w-[clamp(700px,80vw,1100px)]">
         {Array.from({ length: 30 }).map((_, i) => (
-          <div className="w-full aspect-square border border-black pl-1 pt-1">
+          <div className="w-full aspect-square border border-black dark:border-white pl-1 pt-1">
             <p>{i}</p>
-            {(i == 5 || i == 10 || i == 20 || i == 24 || i == 29) && (
+            {(i == 5 || i == 10 || i == 14 || i == 24 || i == 29) && (
               <ul className="list-inside">
-                <li className="flex items-center gap-1">
+                <li className="cursor-pointer flex items-center gap-1">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div> Event
                 </li>
               </ul>

@@ -21,7 +21,7 @@ export default function RootLayout({
   const theme = cookies().get("theme")?.value == "dark" ? "dark" : "light";
 
   return (
-    <html lang="en" className={theme}>
+    <html lang="en" className={'dark'}>
       <body className={inter.className}>
         <UserProvider>
           <Header />
