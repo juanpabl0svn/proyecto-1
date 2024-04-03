@@ -21,7 +21,7 @@ export default function Header() {
         </Modal>
       )}
       <header className="bg-gray-700 body-font">
-        <article className="container flex items-center justify-between px-4 py-4 md:py-6">
+        <article className="flex items-center justify-between px-4 py-4 md:py-6">
           <section className="flex items-center space-x-4">
             <Link className="flex items-center space-x-2 " href="#">
               <FlagIcon className="h-6 w-6" />
