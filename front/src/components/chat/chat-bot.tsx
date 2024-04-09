@@ -65,7 +65,7 @@ export default function ChatBot() {
       </article>
       <article
         id="chat-bot"
-        className=" bg-gray-500 rounded-md transition-all duration-300 ease-in-out h-full z-10 relative translate-x-[150%]"
+        className=" bg-gray-400 rounded-md transition-all duration-300 ease-in-out h-full z-10 relative translate-x-[150%] shadow-2xl"
       >
         <header className="flex justify-between px-2 h-[10%] items-center">
           <div>
@@ -76,17 +76,11 @@ export default function ChatBot() {
             x
           </span>
         </header>
-        <section className="h-[80%] pt-2 bg-white dark:bg-gray-700 shadow-inner flex flex-col gap-3 px-4 overflow-y-auto">
-          {/* <p className="max-w-[60%] w-fit text-wrap  p-2 rounded-lg bg-gray-400 text-black">
-            Hola, ¿Como puedo ayudarte hoy?
-          </p>
-          <p className="max-w-[60%] w-fit text-wrap  p-2 rounded-lg bg-gray-200 text-black self-end">
-            ¿Como puedes ayudarme?
-          </p> */}
+        <section className="h-[80%] pt-2 bg-white dark:bg-gray-300 shadow-inner flex flex-col gap-3 px-4 overflow-y-auto">
           {messages.map((msg, index) => (
             <p
               key={index}
-              className={`max-w-[60%] w-fit text-wrap  p-2 rounded-lg bg-gray-400 text-black ${
+              className={`max-w-[60%] w-fit text-wrap dark:text-white  p-2 rounded-lg bg-gray-400 text-black ${
                 msg.from === "user" ? "self-end" : ""
               }`}
             >
@@ -96,11 +90,11 @@ export default function ChatBot() {
         </section>
         <form className="h-[10%] flex" onSubmit={handleNewMessage}>
           <textarea
-            className="w-full resize-none rounded-bl-md outline-none text-black pt-2 px-2 leading-tight bg-gray-200"
+            className="w-full resize-none rounded-bl-md outline-none dark:text-white text-black pt-2 px-2 leading-tight dark:bg-gray-500 bg-gray-200"
             onKeyUp={handleKeyUp}
             name="textarea"
           />
-          <button className="bg-gray-900 w-20 rounded-br-md line-h">
+          <button className="dark:bg-gray-900 bg-gray-400 w-20 rounded-br-md line-h">
             Enviar
           </button>
         </form>
