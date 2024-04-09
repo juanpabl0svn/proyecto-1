@@ -2,7 +2,7 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
   return (
     <aside className="w-[clamp(350px,30vw,450px)] show-modal-class">
       <span
-        className="absolute -right-2 -top-8 text-xl cursor-pointer opacity-70 hover:opacity-100"
+        className="absolute -right-2 -top-8 text-xl cursor-pointer opacity-70 hover:opacity-100 text-white"
         onClick={onClick}
       >
         X
@@ -10,17 +10,16 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
       <div className="bg-gray-800 rounded-lg  overflow-hidden shadow-[0_10px_25px_-5px_rgba(0,_0,_0,_0.1),_0_10px_10px_-5px_rgba(0,_0,_0,_0.04)]">
         <div className="p-8">
           <h2 className="text-center text-3xl font-extrabold text-white">
-            Welcome Back
+            Bienvenido
           </h2>
-          <p className="mt-4 text-center text-gray-400">Sign in to continue</p>
+          <p className="mt-4 text-center text-gray-400">
+            Ingresa tu usuario y contraseña
+          </p>
           <form method="POST" action="#" className="mt-8 space-y-6">
             <div className="rounded-md shadow-sm">
               <div>
-                <label className="sr-only" htmlFor="email">
-                  Email address
-                </label>
                 <input
-                  placeholder="Email address"
+                  placeholder="Email"
                   className="appearance-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   required
                   autoComplete="email"
@@ -30,11 +29,8 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
                 />
               </div>
               <div className="mt-4">
-                <label className="sr-only" htmlFor="password">
-                  Password
-                </label>
                 <input
-                  placeholder="Password"
+                  placeholder="Contraseña"
                   className="appearance-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   required
                   autoComplete="current-password"
@@ -57,7 +53,7 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
                   className="ml-2 block text-sm text-gray-400"
                   htmlFor="remember-me"
                 >
-                  Remember me
+                  Recordarme
                 </label>
               </div>
 
@@ -66,28 +62,28 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
                   className="font-medium text-indigo-500 hover:text-indigo-400"
                   href="#"
                 >
-                  Forgot your password?
+                  ¿Olvidaste tu contraseña?
                 </a>
               </div>
             </div>
 
             <div>
               <button
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-gray-900 bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="text-white relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md  bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 type="submit"
               >
-                Sign In
+                Iniciar sesión
               </button>
             </div>
           </form>
         </div>
         <div className="px-8 py-4 bg-gray-700 text-center">
-          <span className="text-gray-400">Don't have an account?</span>
+          <span className="text-gray-400">¿No tienes una cuenta?</span>
           <a
-            className="font-medium text-indigo-500 hover:text-indigo-400"
+            className="font-medium text-indigo-500 hover:text-indigo-400 m-1"
             href="#"
           >
-            Sign up
+            Registrate
           </a>
         </div>
       </div>

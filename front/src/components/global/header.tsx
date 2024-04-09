@@ -45,13 +45,13 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
                 className={`text-gray-100 ${path === "" ? "underline" : ""}`}
                 href="#"
               >
-                Services
+                Servicios
               </Link>
               <Link
                 className={`text-gray-100 ${path === "" ? "underline" : ""}`}
                 href="#"
               >
-                About
+                Información
               </Link>
               <Link
                 className={`text-gray-100 ${
@@ -59,7 +59,7 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
                 }`}
                 href="/calendar"
               >
-                Calendar
+                Calendario
               </Link>
             </nav>
           </section>

@@ -32,13 +32,17 @@ export default function ChatBot() {
     ((e.target as HTMLFormElement).textarea as HTMLTextAreaElement).value = "";
   }
 
-  const handleKeyUp = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    console.log(e);
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
+
       (
         (e.target as HTMLTextAreaElement)?.nextSibling as HTMLButtonElement
       )?.click();
+      return;
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      e.currentTarget.value += "\n";
     }
   };
 
@@ -91,7 +95,7 @@ export default function ChatBot() {
         <form className="h-[10%] flex" onSubmit={handleNewMessage}>
           <textarea
             className="w-full resize-none rounded-bl-md outline-none dark:text-white text-black pt-2 px-2 leading-tight dark:bg-gray-500 bg-gray-200"
-            onKeyUp={handleKeyUp}
+            onKeyDown={handleKeyDown}
             name="textarea"
           />
           <button className="dark:bg-gray-900 bg-gray-400 w-20 rounded-br-md line-h">

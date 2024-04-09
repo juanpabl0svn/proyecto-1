@@ -2,7 +2,7 @@ export default function Calendar() {
   return (
     <aside>
       <h1 className="text-center text-2xl my-10">Calendar</h1>
-      <article className="grid grid-cols-7 mx-auto text-center w-[clamp(700px,80vw,1100px)]">
+      <article className="grid grid-cols-7 mx-auto text-center w-[clamp(700px,80vw,1100px)] mb-10">
         <p>Monday</p>
         <p>Tuesday</p>
         <p>Wednesday</p>
