@@ -8,8 +8,9 @@ import { useState } from "react";
 import LogIn from "../login/login";
 import Modal from "./modal";
 import { usePathname } from "next/navigation";
+import ThemeSwitch from "./theme-switch/theme-switch";
 
-export default function Header() {
+export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
   const { isLoggedIn } = useUserContext();
 
   const [showLogin, setShowLogin] = useState(false);
@@ -24,7 +25,8 @@ export default function Header() {
         </Modal>
       )}
       <header className="bg-gray-700 body-font">
-        <article className="flex items-center justify-between px-4 py-4 md:py-6">
+        <article className="flex items-center justify-between px-4 py-4 md:py-8">
+          <ThemeSwitch isDarkMode={isDarkMode} />
           <section className="flex items-center space-x-4">
             <Link className="flex items-center space-x-2 " href="/">
               <FlagIcon className="h-6 w-6 stroke-gray-100" />

@@ -18,13 +18,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = cookies().get("theme")?.value == "dark" ? "dark" : "light";
+  const theme = cookies().get("theme")?.value == "dark" ? "dark" : "";
 
   return (
-    <html lang="en" className={'dark'}>
+    <html lang="en" className={theme}>
       <body className={inter.className}>
         <UserProvider>
-          <Header />
+          <Header isDarkMode={theme === "dark"} />
           {children}
           <ChatBot />
         </UserProvider>

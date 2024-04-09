@@ -23,7 +23,7 @@ const UserContext = createContext(INITIAL_STATE);
 export const useUserContext = () => useContext(UserContext);
 
 export default function UserProvider({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
