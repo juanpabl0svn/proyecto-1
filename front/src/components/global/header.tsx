@@ -42,10 +42,10 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
                 Home
               </Link>
               <Link
-                className={`text-gray-100 ${path === "" ? "underline" : ""}`}
-                href="#"
+                className={`text-gray-100 ${path === "/members" ? "underline" : ""}`}
+                href="/members"
               >
-                Servicios
+                Miembros
               </Link>
               <Link
                 className={`text-gray-100 ${path === "" ? "underline" : ""}`}
