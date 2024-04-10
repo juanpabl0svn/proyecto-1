@@ -24,7 +24,7 @@ export default function Body() {
             alt="Bank"
             className="aspect-[2/1] overflow-hidden rounded-lg object-cover object-center"
             height="300"
-            src="/placeholder.svg"
+            src="/post.png"
             width="700"
           />
         </div>

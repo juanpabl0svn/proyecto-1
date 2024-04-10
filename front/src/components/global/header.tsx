@@ -25,14 +25,11 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
         </Modal>
       )}
       <header className="bg-gray-700 body-font">
-        <article className="flex items-center justify-between px-4 py-4 md:py-8">
+        <article className="flex items-center justify-between px-4 py-4 md:py-5">
           <ThemeSwitch isDarkMode={isDarkMode} />
           <section className="flex items-center space-x-4">
             <Link className="flex items-center space-x-2 " href="/">
-              <FlagIcon className="h-6 w-6 stroke-gray-100" />
-              <span className="font-semibold tracking-tighter text-gray-100">
-                Coop. Comultrasan
-              </span>
+              <img src="/logo.png" alt="" className="mix-blend-multiply h-22 w-44" />
             </Link>
             <nav className="flex items-center space-x-2 text-sm font-medium tracking-wide">
               <Link
@@ -42,7 +39,9 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
                 Home
               </Link>
               <Link
-                className={`text-gray-100 ${path === "/members" ? "underline" : ""}`}
+                className={`text-gray-100 ${
+                  path === "/members" ? "underline" : ""
+                }`}
                 href="/members"
               >
                 Miembros
