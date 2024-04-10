@@ -48,9 +48,9 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
               </Link>
               <Link
                 className={`text-gray-100 ${path === "" ? "underline" : ""}`}
-                href="#"
+                href="#convenios"
               >
-                Información
+                Convenios
               </Link>
               <Link
                 className={`text-gray-100 ${

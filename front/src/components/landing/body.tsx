@@ -82,10 +82,10 @@ export default function Body() {
       </aside>
 
       <aside className="bg-gray-500 text-center py-8">
-        <h2 className="text-4xl font-semibold tracking-tighter">
+        <h2 id="convenios" className="text-4xl font-semibold tracking-tighter">
           Nuestros convenios
         </h2>
-        <section className="grid mt-8 mx-6 gap-4 grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
+        <section className="mt-8 mx-6 flex flex-wrap gap-5 justify-center">
           <img src="/smartfit.jpeg" alt="smartfit" className="rounded-md" />
           <img src="/colombo.png" alt="smartfit" className="rounded-md" />
           <img src="/udem.png" alt="smartfit" className="rounded-md" />
