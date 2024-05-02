@@ -69,7 +69,7 @@ export default function ChatBot() {
       </article>
       <article
         id="chat-bot"
-        className=" bg-gray-400 rounded-md transition-all duration-300 ease-in-out h-full z-10 relative translate-x-[150%] shadow-2xl"
+        className=" bg-gray-400 rounded-md transition-all duration-500 ease-in-out h-full z-10 relative translate-x-[150%] shadow-2xl"
       >
         <header className="flex justify-between px-2 h-[10%] items-center">
           <div>

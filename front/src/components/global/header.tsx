@@ -24,63 +24,58 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
           <LogIn onClick={() => setShowLogin(false)} />
         </Modal>
       )}
-      <header className="bg-gray-700 body-font">
-        <article className="flex items-center justify-between px-4 py-4 md:py-5">
-          <ThemeSwitch isDarkMode={isDarkMode} />
-          <section className="flex items-center space-x-4">
-            <Link className="flex items-center space-x-2 " href="/">
-              <img src="/logo.png" alt="" className="mix-blend-multiply h-22 w-44" />
-            </Link>
-            <nav className="flex items-center space-x-2 text-sm font-medium tracking-wide">
-              <Link
-                className={`text-gray-100 ${path === "/" ? "underline" : ""}`}
-                href="/"
-              >
-                Home
-              </Link>
-              <Link
-                className={`text-gray-100 ${
-                  path === "/members" ? "underline" : ""
-                }`}
-                href="/members"
-              >
-                Miembros
-              </Link>
-              <Link
-                className={`text-gray-100 ${path === "" ? "underline" : ""}`}
-                href="#convenios"
-              >
-                Convenios
-              </Link>
-              <Link
-                className={`text-gray-100 ${
-                  path === "/calendar" ? "underline" : ""
-                }`}
-                href="/calendar"
-              >
-                Calendario
-              </Link>
-            </nav>
-          </section>
-          <section className="flex items-center space-x-4">
-            <Link
-              className="inline-flex items-center space-x-2 text-sm font-medium text-gray-100 hover:underline"
-              href="#"
-            >
-              {isLoggedIn && <UserIcon className="w-4 h-4" />}
-              <span className="font-semibold tracking-tighter sm:hidden">
-                Account
-              </span>
-            </Link>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={(e) => setShowLogin(true)}
-            >
-              {isLoggedIn ? "Log Out" : "Log In"}
-            </Button>
-          </section>
-        </article>
+      <header className="bg-white flex justify-end relative h-24 shadow-lg">
+        <Link className="flex items-center flex-grow" href="/">
+          <img src="/logo.png" alt="" className="h-22 w-44 " />
+        </Link>
+        <nav className="flex items-center gap-3 text-sm font-medium tracking-wide">
+          <Link
+            className={`text-gray-600 ${path === "/" ? "underline" : ""}`}
+            href="/"
+          >
+            Home
+          </Link>
+          <Link
+            className={`text-gray-600 ${
+              path === "/members" ? "underline" : ""
+            }`}
+            href="/members"
+          >
+            Miembros
+          </Link>
+          <Link
+            className={`text-gray-600 ${path === "" ? "underline" : ""}`}
+            href="/#convenios"
+          >
+            Convenios
+          </Link>
+          <Link
+            className={`text-gray-600 ${
+              path === "/calendar" ? "underline" : ""
+            }`}
+            href="/calendar"
+          >
+            Calendario
+          </Link>
+        </nav>
+        <section className="flex items-center justify-end mr-2 flex-grow">
+          <Link
+            className="inline-flex items-center space-x-2 text-sm font-medium text-gray-600 hover:underline"
+            href="#"
+          >
+            {isLoggedIn && <UserIcon className="w-4 h-4" />}
+            <span className="font-semibold tracking-tighter sm:hidden">
+              Account
+            </span>
+          </Link>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={(e) => setShowLogin(true)}
+          >
+            {isLoggedIn ? "Log Out" : "Log In"}
+          </Button>
+        </section>
       </header>
     </>
   );

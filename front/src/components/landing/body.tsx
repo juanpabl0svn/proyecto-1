@@ -81,7 +81,7 @@ export default function Body() {
         </article>
       </aside>
 
-      <aside className="bg-gray-500 text-center py-8">
+      <aside className="bg-gray-200 text-center py-8">
         <h2 id="convenios" className="text-4xl font-semibold tracking-tighter">
           Nuestros convenios
         </h2>
@@ -91,7 +91,7 @@ export default function Body() {
           <img src="/udem.png" alt="smartfit" className="rounded-md" />
         </section>
       </aside>
-      <aside className="bg-gray-100 dark:bg-gray-800 body-font">
+      <aside className="bg-gray-100 body-font">
         <section className="container grid items-center justify-center gap-4 px-4 py-12 md:py-24">
           <article className="space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
