@@ -47,9 +47,9 @@ export default function ChatBot() {
   };
 
   return (
-    <aside className="fixed right-4 bottom-8 h-[400px]">
+    <>
       <article
-        className="cursor-pointer w-14 aspect-square absolute bottom-0 right-3"
+        className="cursor-pointer w-14 aspect-square fixed bottom-5 right-3 z-20"
         onClick={handleClick}
       >
         <svg
@@ -69,14 +69,18 @@ export default function ChatBot() {
       </article>
       <article
         id="chat-bot"
-        className=" bg-gray-300 rounded-md transition-all duration-500 ease-in-out h-full z-10 relative translate-x-[150%] shadow-2xl w-[280px]"
+        className=" bg-gray-300 rounded-md transition-all duration-500 ease-in-out z-20 
+          fixed right-4 bottom-6 h-[400px] translate-x-[150%] shadow-2xl w-[280px]"
       >
         <header className="flex justify-between px-2 h-[10%] items-center">
           <div className="text-gray-700">
             <img src="" alt="" />
             <p>Asesor Inteligente</p>
           </div>
-          <span className="text-xl mr-1 cursor-pointer text-gray-700 hover:text-white transition-all duration-300" onClick={handleClick}>
+          <span
+            className="text-xl mr-1 cursor-pointer text-gray-700 hover:text-white transition-all duration-300"
+            onClick={handleClick}
+          >
             x
           </span>
         </header>
@@ -103,6 +107,6 @@ export default function ChatBot() {
           </button>
         </form>
       </article>
-    </aside>
+    </>
   );
 }
