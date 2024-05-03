@@ -24,7 +24,7 @@ export default function Body() {
             alt="Bank"
             className="aspect-[2/1] overflow-hidden rounded-lg object-cover object-center"
             height="300"
-            src="/post.png"
+            src="/portada_financiera.webp"
             width="700"
           />
         </section>

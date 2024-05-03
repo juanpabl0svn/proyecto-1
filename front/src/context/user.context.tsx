@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import UserReducer from "./user.reducer";
 import { IMESSAGE, IUSER } from "@/models/types";
 
@@ -29,6 +29,9 @@ export default function UserProvider({
 }) {
   const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE);
 
+  useEffect(()=> {
+    
+  })
   return (
     <UserContext.Provider
       value={{
