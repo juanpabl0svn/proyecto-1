@@ -81,7 +81,7 @@ export default function Body() {
         </article>
       </aside>
 
-      <aside className="bg-gray-200 text-center py-8">
+      <aside className="bg-gray-200 text-center py-8 shadow-inner">
         <h2 id="convenios" className="text-4xl font-semibold tracking-tighter">
           Nuestros convenios
         </h2>

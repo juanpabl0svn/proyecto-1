@@ -69,14 +69,14 @@ export default function ChatBot() {
       </article>
       <article
         id="chat-bot"
-        className=" bg-gray-400 rounded-md transition-all duration-500 ease-in-out h-full z-10 relative translate-x-[150%] shadow-2xl"
+        className=" bg-gray-300 rounded-md transition-all duration-500 ease-in-out h-full z-10 relative translate-x-[150%] shadow-2xl w-[280px]"
       >
         <header className="flex justify-between px-2 h-[10%] items-center">
-          <div>
+          <div className="text-gray-700">
             <img src="" alt="" />
-            <p>Tu amigo</p>
+            <p>Asesor Inteligente</p>
           </div>
-          <span className="text-xl mr-1 cursor-pointer" onClick={handleClick}>
+          <span className="text-xl mr-1 cursor-pointer text-gray-700 hover:text-white transition-all duration-300" onClick={handleClick}>
             x
           </span>
         </header>
@@ -84,7 +84,7 @@ export default function ChatBot() {
           {messages.map((msg, index) => (
             <p
               key={index}
-              className={`max-w-[60%] w-fit text-wrap dark:text-white  p-2 rounded-lg bg-gray-400 text-black ${
+              className={`max-w-[75%] w-fit text-wrap dark:text-white  p-2 rounded-lg bg-gray-300 text-black ${
                 msg.from === "user" ? "self-end" : ""
               }`}
             >
@@ -98,7 +98,7 @@ export default function ChatBot() {
             onKeyDown={handleKeyDown}
             name="textarea"
           />
-          <button className="dark:bg-gray-900 bg-gray-400 w-20 rounded-br-md line-h">
+          <button className="bg-gray-200 w-20 rounded-br-md border-l-[2px] border-white transition-all duration-300 hover:bg-gray-300 hover:text-gray-500">
             Enviar
           </button>
         </form>
