@@ -1,3 +1,16 @@
+export const hiddeModal = (callback: any) => {
+  const modal = document.querySelector("#modal");
+
+  if (!modal) return;
+
+
+  modal.classList.add("hidde-modal");
+
+  setTimeout(() => {
+    callback();
+  }, 150);
+};
+
 export default function Modal({
   children,
   className,
@@ -13,9 +26,13 @@ export default function Modal({
       className={`z-50 content-center min-h-dvh fixed w-full bg-[rgba(0,0,0,.6)] ${
         className ?? ""
       }`}
-      onClick={onClick}
+      onClick={() => hiddeModal(onClick)}
     >
-      <div className="w-fit mx-auto" onClick={(e) => e.stopPropagation()}>
+      <div
+        id="modal"
+        className="w-fit mx-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
       </div>
     </div>

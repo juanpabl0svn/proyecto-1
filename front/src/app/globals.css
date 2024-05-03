@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+}
+
 .show-modal-class {
   opacity: 0;
   scale: 0.45;
@@ -15,8 +19,15 @@
   }
 }
 
-*{
-  scroll-behavior: smooth;
+.hidde-modal {
+  animation: hidde-modal 0.28s ease-out forwards;
+}
+
+@keyframes hidde-modal {
+  to {
+    opacity: 0;
+    scale: 0.4;
+  }
 }
 
 @layer base {

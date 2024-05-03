@@ -1,9 +1,11 @@
+import { hiddeModal } from "../global/modal";
+
 export default function LogIn({ onClick }: { onClick: () => void }) {
   return (
     <aside className="w-[clamp(350px,30vw,450px)] show-modal-class">
       <span
         className="absolute -right-2 -top-8 text-xl cursor-pointer opacity-70 hover:opacity-100 text-white"
-        onClick={onClick}
+        onClick={() => hiddeModal(onClick)}
       >
         X
       </span>
@@ -20,7 +22,7 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
               <div>
                 <input
                   placeholder="Email"
-                  className="appearance-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="appearance-none relative block w-full px-3 py-3 border border-gray-600 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   required
                   autoComplete="email"
                   type="email"
@@ -31,7 +33,7 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
               <div className="mt-4">
                 <input
                   placeholder="Contraseña"
-                  className="appearance-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  className="appearance-none relative block w-full px-3 py-3 border border-gray-600 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   required
                   autoComplete="current-password"
                   type="password"
@@ -41,25 +43,12 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
               </div>
             </div>
 
-            <div className="flex items-center justify-between mt-4">
-              <div className="flex items-center">
-                <input
-                  className="h-4 w-4 text-indigo-500 focus:ring-indigo-400 border-gray-600 rounded"
-                  type="checkbox"
-                  name="remember-me"
-                  id="remember-me"
-                />
-                <label
-                  className="ml-2 block text-sm text-gray-400"
-                  htmlFor="remember-me"
-                >
-                  Recordarme
-                </label>
-              </div>
+            <div className="flex items-center justify-center mt-4">
+
 
               <div className="text-sm">
                 <a
-                  className="font-medium text-indigo-500 hover:text-indigo-400"
+                  className="font-medium text-indigo-700 hover:text-indigo-400"
                   href="#"
                 >
                   ¿Olvidaste tu contraseña?
@@ -77,7 +66,7 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
             </div>
           </form>
         </div>
-        <div className="px-8 py-4 bg-gray-700 text-center">
+        <div className="px-8 py-4 bg-gray-600 text-center">
           <span className="text-gray-400">¿No tienes una cuenta?</span>
           <a
             className="font-medium text-indigo-500 hover:text-indigo-400 m-1"
