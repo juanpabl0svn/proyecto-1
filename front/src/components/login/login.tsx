@@ -2,19 +2,43 @@ import { hiddeModal } from "../global/modal";
 
 import { useUserContext } from "@/context/user.context";
 
+import { createClient } from "@/utils/supabase/client";
+
+import toast from "react-hot-toast";
+
 export default function LogIn({ onClick }: { onClick: () => void }) {
   const { logIn } = useUserContext();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const supabase = createClient();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    toast.remove();
 
     const { email, password } = Object.fromEntries(
       new FormData(e.currentTarget) as any
     );
 
-    if (password === "1234") {
-      logIn({email, name: "John Doe", username: "johndoe"})
+    try {
+      const { data, error } = await supabase
+        .from("users")
+        .select()
+        .eq("email", email)
+        .eq("password", password)
+        .limit(1)
+        .single();
+
+      if (error || !data) throw new Error("Error al iniciar sesión");
+
+      logIn(data);
+
+      toast.success(`Bienvenido ${data.name}`);
+
       hiddeModal(onClick);
+    } catch (error) {
+      toast.error("Usuario o contraseña incorrectos");
+      console.log(error);
     }
   };
 

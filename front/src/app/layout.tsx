@@ -5,6 +5,7 @@ import UserProvider from "@/context/user.context";
 import { cookies } from "next/headers";
 import ChatBot from "@/components/chat/chat-bot";
 import Header from "@/components/global/header";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en" className={theme}>
       <body className={inter.className}>
         <UserProvider>
+          <Toaster />
           <Header isDarkMode={theme === "dark"} />
           {children}
           <ChatBot />
