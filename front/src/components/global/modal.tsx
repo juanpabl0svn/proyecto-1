@@ -23,7 +23,7 @@ export default function Modal({
 }) {
   return (
     <div
-      className={`z-50 content-center min-h-dvh fixed w-full bg-[rgba(0,0,0,.6)] ${
+      className={`z-50 content-center min-h-dvh fixed w-full bg-[rgba(0,0,0,.6)] top-0 ${
         className ?? ""
       }`}
       onClick={() => hiddeModal(onClick)}

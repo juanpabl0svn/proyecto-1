@@ -6,7 +6,7 @@ import BarChartIcon from "../icons/bar-char.icon";
 
 export default function Body() {
   return (
-    <main className="flex-1">
+    <main className="flex-1 mt-10">
       <aside className="bg-gray-100 dark:bg-gray-800">
         <section className="container grid items-center justify-center gap-4 px-4 py-12 md:py-24">
           <article className="space-y-4 text-center">

@@ -1,6 +1,6 @@
 export default function Calendar() {
   return (
-    <aside>
+    <aside className="">
       <h1 className="text-center text-2xl my-10">Calendar</h1>
       <article className="grid grid-cols-7 mx-auto text-center w-[clamp(700px,80vw,1100px)] mb-10">
         <p>Monday</p>
@@ -11,7 +11,7 @@ export default function Calendar() {
         <p>Saturday</p>
         <p>Sunday</p>
       </article>
-      <article className="grid grid-cols-7 mx-auto  w-[clamp(700px,80vw,1100px)]">
+      <article className="grid grid-cols-7 mx-auto  w-[clamp(600px,70vw,900px)]">
         {Array.from({ length: 30 }).map((_, i) => (
           <div className="w-full aspect-square border border-black dark:border-white pl-1 pt-1" key={i}>
             <p>{i+1}</p>
