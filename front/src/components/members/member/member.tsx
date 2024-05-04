@@ -14,7 +14,7 @@ export default function Member() {
   };
 
   return (
-    <aside className="w-[95%] max-w-[800px] h-64 dark:bg-gray-900 bg-gray-300 shadow-xl border border-gray-400 rounded-xl p-6 flex gap-4 flex-wrap justify-center items-center relative">
+    <aside className="w-[95%] max-w-[800px] h-full dark:bg-gray-900 bg-gray-300 shadow-xl border border-gray-400 rounded-xl p-9 flex gap-4 flex-wrap justify-center items-center relative">
       <EditIcon
         onClick={handleEdit}
         className={`absolute right-20 top-2 cursor-pointer hover:stroke-white transition-all duration-200 ease-in-out ${
