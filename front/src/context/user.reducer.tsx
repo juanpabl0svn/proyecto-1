@@ -1,3 +1,5 @@
+import { INITIAL_STATE } from "./user.context";
+
 export default function UserReducer(
   state: any,
   action: { type: string; payload?: any }
@@ -12,7 +14,10 @@ export default function UserReducer(
       return {
         ...state,
         ...action.payload,
+        isLoggedIn: true,
       };
+    case "LOG_OUT":
+      return INITIAL_STATE;
     default:
       return state;
   }

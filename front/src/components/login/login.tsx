@@ -1,6 +1,23 @@
 import { hiddeModal } from "../global/modal";
 
+import { useUserContext } from "@/context/user.context";
+
 export default function LogIn({ onClick }: { onClick: () => void }) {
+  const { logIn } = useUserContext();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const { email, password } = Object.fromEntries(
+      new FormData(e.currentTarget) as any
+    );
+
+    if (password === "1234") {
+      logIn({email, name: "John Doe", username: "johndoe"})
+      hiddeModal(onClick);
+    }
+  };
+
   return (
     <aside className="w-[clamp(350px,30vw,450px)] show-modal-class">
       <span
@@ -17,7 +34,7 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
           <p className="mt-4 text-center text-gray-400">
             Ingresa tu usuario y contraseña
           </p>
-          <form method="POST" action="#" className="mt-8 space-y-6">
+          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <div className="rounded-md shadow-sm">
               <div>
                 <input
@@ -44,8 +61,6 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
             </div>
 
             <div className="flex items-center justify-center mt-4">
-
-
               <div className="text-sm">
                 <a
                   className="font-medium text-indigo-700 hover:text-indigo-400"

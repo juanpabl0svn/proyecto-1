@@ -4,18 +4,20 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import UserReducer from "./user.reducer";
 import { IMESSAGE, IUSER } from "@/models/types";
 
-const INITIAL_STATE: {
+export const INITIAL_STATE: {
   user: IUSER | null;
   isLoggedIn: boolean;
   messages: IMESSAGE[];
   addMessage: (message: IMESSAGE) => void;
   logIn: (user: IUSER) => void;
+  logOut: () => void;
 } = {
   user: null,
   isLoggedIn: false,
   messages: [],
   addMessage: () => {},
   logIn: () => {},
+  logOut: () => {},
 };
 
 const UserContext = createContext(INITIAL_STATE);
@@ -42,6 +44,9 @@ export default function UserProvider({
         addMessage(message: IMESSAGE) {
           dispatch({ type: "ADD_MESSAGE", payload: message });
         },
+        logOut(){
+          dispatch({ type: "LOG_OUT" })
+        }
       }}
     >
       {children}

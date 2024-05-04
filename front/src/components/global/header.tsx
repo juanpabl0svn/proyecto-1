@@ -8,10 +8,9 @@ import { useState } from "react";
 import LogIn from "../login/login";
 import Modal from "./modal";
 import { usePathname } from "next/navigation";
-import ThemeSwitch from "./theme-switch/theme-switch";
 
 export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
-  const { isLoggedIn } = useUserContext();
+  const { isLoggedIn, logOut } = useUserContext();
 
   const [showLogin, setShowLogin] = useState(false);
 
@@ -35,14 +34,16 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
           >
             Home
           </Link>
-          <Link
-            className={`text-gray-600 ${
-              path === "/members" ? "underline" : ""
-            }`}
-            href="/members"
-          >
-            Miembros
-          </Link>
+          {isLoggedIn && (
+            <Link
+              className={`text-gray-600 ${
+                path === "/members" ? "underline" : ""
+              }`}
+              href="/members"
+            >
+              Miembros
+            </Link>
+          )}
           <Link
             className={`text-gray-600 ${path === "" ? "underline" : ""}`}
             href="/#convenios"
@@ -58,7 +59,7 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
             Calendario
           </Link>
         </nav>
-        <section className="flex items-center justify-end mr-2 flex-grow">
+        <section className="flex items-center justify-end mr-2 flex-grow gap-3">
           <Link
             className="inline-flex items-center space-x-2 text-sm font-medium text-gray-600 hover:underline"
             href="#"
@@ -68,10 +69,11 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
               Account
             </span>
           </Link>
+
           <Button
             size="sm"
             variant="outline"
-            onClick={(e) => setShowLogin(true)}
+            onClick={(e) => (!isLoggedIn ? setShowLogin(true) : logOut())}
           >
             {isLoggedIn ? "Log Out" : "Log In"}
           </Button>
