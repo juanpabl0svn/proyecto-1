@@ -4,7 +4,7 @@ import { useUserContext } from "@/context/user.context";
 import { useRouter } from "next/navigation";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { isLoggedIn } = useUserContext();
+  const { user,isLoggedIn } = useUserContext();
 
   const router = useRouter();
 

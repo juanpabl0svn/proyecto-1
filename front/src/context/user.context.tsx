@@ -31,9 +31,6 @@ export default function UserProvider({
 }) {
   const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE);
 
-  useEffect(()=> {
-    
-  })
   return (
     <UserContext.Provider
       value={{

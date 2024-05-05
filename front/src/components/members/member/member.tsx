@@ -1,20 +1,27 @@
 import EditIcon from "@/components/icons/edit.icon";
 import DeleteIcon from "@/components/icons/delete.icon";
 import { useState } from "react";
+import { IUSER } from "@/models/types";
 
-export default function Member() {
+export default function Member({
+  user,
+  handleDelete,
+  handleEdit,
+  isTheHead,
+}: {
+  user: IUSER;
+  handleDelete: any;
+  handleEdit: any;
+  isTheHead: boolean;
+}) {
   const [edit, setEdit] = useState(false);
 
-  const handleDelete = (e: any) => {
-    e.target.parentNode.remove();
-  };
-
-  const handleEdit = () => {
-    setEdit(!edit);
-  };
-
   return (
-    <aside className="w-[95%] max-w-[800px] h-full dark:bg-gray-900 bg-gray-300 shadow-xl border border-gray-400 rounded-xl p-9 flex gap-4 flex-wrap justify-center items-center relative">
+    <aside
+      className={`w-[95%] max-w-[800px] h-full shadow-xl border border-gray-400 rounded-xl p-9 flex gap-4 flex-wrap justify-center items-center relative ${
+        isTheHead ? "bg-gray-400" : "bg-gray-300"
+      } `}
+    >
       <EditIcon
         onClick={handleEdit}
         className={`absolute right-20 top-2 cursor-pointer hover:stroke-white transition-all duration-200 ease-in-out ${
@@ -30,7 +37,7 @@ export default function Member() {
         <input
           type="text"
           className="py-1 px-2 rounded-md w-40"
-          defaultValue="999999999"
+          defaultValue={user.nit}
           disabled={!edit}
         />
       </article>
@@ -39,17 +46,8 @@ export default function Member() {
         <input
           type="text"
           className="py-1 px-2 rounded-md w-40"
-          defaultValue={"Juan Pablo"}
+          defaultValue={user.name}
           disabled={!edit}
-        />
-      </article>
-      <article className="flex flex-col">
-        <label htmlFor="">Apellidos</label>
-        <input
-          type="text"
-          className="py-1 px-2 rounded-md w-40"
-          disabled={!edit}
-          defaultValue={"Sanchez Villegas"}
         />
       </article>
       <article className="flex flex-col">
@@ -57,7 +55,7 @@ export default function Member() {
         <input
           type="text"
           className="py-1 px-2 rounded-md w-40"
-          defaultValue="juan@gmail.com"
+          defaultValue={user.email}
           disabled={!edit}
         />
       </article>
@@ -66,7 +64,7 @@ export default function Member() {
         <input
           type="text"
           className="py-1 px-2 rounded-md w-40"
-          defaultValue="300123123"
+          defaultValue={user.phone_number}
           disabled={!edit}
         />
       </article>
@@ -75,6 +73,7 @@ export default function Member() {
         <input
           type="date"
           className="py-1 px-2 rounded-md w-40"
+          defaultValue={user.birth_date}
           disabled={!edit}
         />
       </article>

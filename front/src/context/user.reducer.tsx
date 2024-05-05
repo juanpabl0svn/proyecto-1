@@ -13,7 +13,7 @@ export default function UserReducer(
     case "LOG_IN":
       return {
         ...state,
-        ...action.payload,
+        user : action.payload,
         isLoggedIn: true,
       };
     case "LOG_OUT":

@@ -33,6 +33,8 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
 
       logIn(data);
 
+      console.log(data)
+
       toast.success(`Bienvenido ${data.name}`);
 
       hiddeModal(onClick);
