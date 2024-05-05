@@ -25,11 +25,19 @@ const UserContext = createContext(INITIAL_STATE);
 export const useUserContext = () => useContext(UserContext);
 
 export default function UserProvider({
-  children
+  children,
+  user,
 }: {
   children: React.ReactNode;
+  user: IUSER | null;
 }) {
   const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE);
+
+  useEffect(() => {
+    if (user) {
+      dispatch({ type: "LOG_IN", payload: user });
+    }
+  }, []);
 
   return (
     <UserContext.Provider
@@ -41,9 +49,9 @@ export default function UserProvider({
         addMessage(message: IMESSAGE) {
           dispatch({ type: "ADD_MESSAGE", payload: message });
         },
-        logOut(){
-          dispatch({ type: "LOG_OUT" })
-        }
+        logOut() {
+          dispatch({ type: "LOG_OUT" });
+        },
       }}
     >
       {children}

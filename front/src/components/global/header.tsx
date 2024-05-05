@@ -7,14 +7,16 @@ import { useUserContext } from "@/context/user.context";
 import { useEffect, useState } from "react";
 import LogIn from "../login/login";
 import Modal from "./modal";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
+export default function Header() {
   const { isLoggedIn, logOut } = useUserContext();
 
   const [showLogin, setShowLogin] = useState(false);
 
   const path = usePathname();
+
+  const router = useRouter();
 
   useEffect(() => {
     let lastScroll = window.scrollY;
@@ -36,6 +38,14 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
     return () => window.removeEventListener("scroll", () => {});
   }, []);
 
+  const handleLogOut = () => {
+    logOut();
+    document.cookie =
+      "comultrasan=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    router.replace("/");
+  };
+
   return (
     <>
       {showLogin && (
@@ -43,7 +53,10 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
           <LogIn onClick={() => setShowLogin(false)} />
         </Modal>
       )}
-      <header id="header" className="fixed w-full transition-all duration-300 ease-in-out top-0">
+      <header
+        id="header"
+        className="fixed w-full transition-all duration-300 ease-in-out top-0"
+      >
         <div className="bg-white flex justify-end relative h-24 shadow-lg">
           <Link className="flex items-center flex-grow" href="/">
             <img src="/logo.png" alt="" className="h-22 w-44 " />
@@ -94,7 +107,9 @@ export default function Header({ isDarkMode }: { isDarkMode: boolean }) {
             <Button
               size="sm"
               variant="outline"
-              onClick={(e) => (!isLoggedIn ? setShowLogin(true) : logOut())}
+              onClick={(e) =>
+                !isLoggedIn ? setShowLogin(true) : handleLogOut()
+              }
             >
               {isLoggedIn ? "Log Out" : "Log In"}
             </Button>

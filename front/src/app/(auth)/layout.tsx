@@ -1,14 +1,14 @@
-"use client";
-
-import { useUserContext } from "@/context/user.context";
-import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { user,isLoggedIn } = useUserContext();
+  const cookieStore = cookies();
 
-  const router = useRouter();
+  const user = cookieStore.get("comultrasan")?.value;
 
-  if (!isLoggedIn) return router.replace("/");
+  if (!user) {
+    return redirect("/");
+  }
 
   return children;
 }

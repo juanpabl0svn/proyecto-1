@@ -37,7 +37,7 @@ export default function Members() {
         console.log(error);
       }
     })();
-  }, []);
+  }, [user]);
 
   const handleEdit = async (user: IUSER) => {
     return Swal.fire({

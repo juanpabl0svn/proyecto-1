@@ -33,7 +33,7 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
 
       logIn(data);
 
-      console.log(data)
+      document.cookie = `comultrasan=${data.id_user}`;
 
       toast.success(`Bienvenido ${data.name}`);
 
