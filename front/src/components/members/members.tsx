@@ -17,7 +17,6 @@ export default function Members() {
 
   const supabase = createClient();
 
-
   useEffect(() => {
     (async () => {
       try {
@@ -38,36 +37,63 @@ export default function Members() {
         console.log(error);
       }
     })();
-  },[]);
+  }, []);
 
-  const handleEdit = (e: any) => {
-    Swal.fire({
-      title: `¿Seguro que deseas eliminar a Juan Pablo Sanchez ?`,
+  const handleEdit = async (user: IUSER) => {
+    return Swal.fire({
+      title: `¿Seguro que deseas modificar a ${user.name}?`,
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: "Si",
       denyButtonText: `No`,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Eliminado correctamente!", "", "success");
-      } else if (result.isDenied) {
-        Swal.fire("Changes are not saved", "", "info");
+        const index = users.findIndex((u) => u.id_user === user.id_user);
+
+        const newMembers = users.with(index, user);
+        setUsers(newMembers);
+        Swal.fire("Editado correctamente!", "", "success");
+
+        return true;
+      }
+
+      return false;
+    });
+  };
+
+  const handleDelete = (user: IUSER) => {
+    Swal.fire({
+      title: `¿Seguro que deseas eliminar a ${user.name}?`,
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      denyButtonText: `No`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const newMembers = users.filter((u) => u.id_user !== user.id_user);
+        setUsers(newMembers);
+        Swal.fire("Eliminado correctamente", "", "success");
       }
     });
   };
 
-
-  const handleDelete = (e: any) => {
-
-  }
-
   return (
     <main className="min-h-[calc(100dvh-150px)] w-full flex flex-col items-center pt-5 gap-6 mt-28">
-      {users.length > 0 ? users.map((member: IUSER) => {
-
-        return <Member key={member.username} user={member} handleEdit={handleEdit} handleDelete={handleDelete} isTheHead={user?.id_user === member?.id_user}/>;
-
-      }) : <p>No hay usuarios</p>}
+      {users.length > 0 ? (
+        users.map((member: IUSER) => {
+          return (
+            <Member
+              key={member.id_user}
+              user={member}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+              isTheHead={user?.id_user === member?.id_user}
+            />
+          );
+        })
+      ) : (
+        <p>No hay usuarios</p>
+      )}
       <button className="bg-gray-200 dark:text-black px-3 py-2 rounded-sm hover:text-white hover:scale-105 transition-all duration-200 ease-in-out cursor-pointer">
         Nuevo +
       </button>
