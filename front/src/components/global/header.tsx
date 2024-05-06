@@ -26,6 +26,9 @@ export default function Header() {
     window.addEventListener("scroll", () => {
       const currentScroll = window.scrollY;
 
+      if (currentScroll < 140)
+        return header?.classList.remove("-translate-y-full");
+
       if (currentScroll > lastScroll) {
         header?.classList.add("-translate-y-full");
       } else {
@@ -55,7 +58,7 @@ export default function Header() {
       )}
       <header
         id="header"
-        className="fixed w-full transition-all duration-300 ease-in-out top-0"
+        className="fixed w-full transition-all duration-300 ease-in-out top-0 z-10"
       >
         <div className="bg-white flex justify-end relative h-24 shadow-lg">
           <Link className="flex items-center flex-grow" href="/">

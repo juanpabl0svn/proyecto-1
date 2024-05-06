@@ -41,12 +41,12 @@ export default function Member({
     >
       <EditIcon
         onClick={() => handleEditProcess()}
-        className={`absolute right-20 rounded-full top-2 cursor-pointer hover:bg-white transition-all duration-200 ease-in-out ${
+        className={`absolute right-20 rounded-full top-2 cursor-pointer hover:bg-white transition-all duration-200 ease-in-out p-2 ${
           edit ? "bg-white" : ""
         } `}
       />
       <DeleteIcon
-        className="absolute right-5 top-2 cursor-pointer transition-all duration-200 ease-in-out hover:rotate-12"
+        className="absolute right-5 top-2 cursor-pointer transition-all p-2 duration-200 ease-in-out hover:rotate-12 hover:bg-red-400 rounded-full"
         onClick={() => handleDelete(user)}
       />
       <article className="flex flex-col">
