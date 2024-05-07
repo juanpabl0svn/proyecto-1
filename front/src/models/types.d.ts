@@ -1,13 +1,11 @@
 export interface IUSER {
-  id_user: string;
-  username: string;
+  id_user: number;
   name: string;
   email: string;
-  username: string;
   password: string;
   birth_date: string;
   phone_number: string;
-  family: string | null;
+  family: number | null;
   nit: string;
 }
 

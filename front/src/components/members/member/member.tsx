@@ -8,14 +8,14 @@ export default function Member({
   user,
   handleDelete,
   handleEdit,
-  isTheHead,
+  isHead,
 }: {
   user: IUSER;
   handleDelete: any;
   handleEdit: any;
-  isTheHead: boolean;
+  isHead: boolean;
 }) {
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState(!user.id_user);
 
   const [currentUser, setCurrentUser] = useState<IUSER>(user);
 
@@ -35,26 +35,28 @@ export default function Member({
 
   return (
     <aside
-      className={`w-[95%] max-w-[800px] h-full shadow-xl border border-gray-400 rounded-xl p-9 flex gap-4 flex-wrap justify-center items-center relative ${
-        isTheHead ? "bg-gray-400" : "bg-gray-300"
-      } `}
+      className={`w-[95%] max-w-[800px] h-full shadow-xl border border-gray-400 rounded-xl p-9 flex gap-4 flex-wrap justify-center items-center relative bg-gray-300`}
     >
-      <EditIcon
-        onClick={() => handleEditProcess()}
-        className={`absolute right-20 rounded-full top-2 cursor-pointer hover:bg-white transition-all duration-200 ease-in-out p-2 ${
-          edit ? "bg-white" : ""
-        } `}
-      />
-      <DeleteIcon
-        className="absolute right-5 top-2 cursor-pointer transition-all p-2 duration-200 ease-in-out hover:rotate-12 hover:bg-red-400 rounded-full"
-        onClick={() => handleDelete(user)}
-      />
+      {isHead && (
+        <>
+          <EditIcon
+            onClick={() => handleEditProcess()}
+            className={`absolute right-20 rounded-full top-2 cursor-pointer hover:bg-white transition-all duration-200 ease-in-out p-2 ${
+              edit ? "bg-white" : ""
+            } `}
+          />
+          <DeleteIcon
+            className="absolute right-5 top-2 cursor-pointer transition-all p-2 duration-200 ease-in-out hover:rotate-12 hover:bg-red-400 rounded-full"
+            onClick={() => handleDelete(user)}
+          />
+        </>
+      )}
       <article className="flex flex-col">
         <label htmlFor="">NIT</label>
         <input
           type="text"
           className="py-1 px-2 rounded-md w-40"
-          value={currentUser.nit}
+          value={currentUser?.nit}
           name="nit"
           onChange={(e) =>
             setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
@@ -67,7 +69,7 @@ export default function Member({
         <input
           type="text"
           className="py-1 px-2 rounded-md w-40"
-          value={currentUser.name}
+          value={currentUser?.name}
           name="name"
           onChange={(e) =>
             setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
@@ -80,7 +82,7 @@ export default function Member({
         <input
           type="text"
           className="py-1 px-2 rounded-md w-40"
-          value={currentUser.email}
+          value={currentUser?.email}
           name="email"
           onChange={(e) =>
             setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
@@ -93,7 +95,7 @@ export default function Member({
         <input
           type="text"
           className="py-1 px-2 rounded-md w-40"
-          value={currentUser.phone_number}
+          value={currentUser?.phone_number}
           name="phone_number"
           onChange={(e) =>
             setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
@@ -106,7 +108,7 @@ export default function Member({
         <input
           type="date"
           className="py-1 px-2 rounded-md w-40"
-          value={currentUser.birth_date}
+          value={currentUser?.birth_date}
           name="birth_date"
           onChange={(e) =>
             setCurrentUser({ ...currentUser, [e.target.name]: e.target.value })
@@ -119,15 +121,16 @@ export default function Member({
           <button
             disabled={JSON.stringify(user) === JSON.stringify(currentUser)}
             onClick={() => handleEdit(currentUser)}
+            className={`bg-green-400 self-end cursor-pointer text-white px-3 py-1 rounded-md hover:bg-green-500 transition-all duration-200 ease-in-out disabled:bg-gray-400`}
           >
             Guardar
           </button>
           <button
-            disabled={JSON.stringify(user) === JSON.stringify(currentUser)}
             onClick={() => {
               setCurrentUser(user);
               setEdit(false);
             }}
+            className="bg-red-400 cursor-pointer self-end text-white px-3 py-1 rounded-md hover:bg-red-500 transition-all duration-200 ease-in-out"
           >
             Cancelar
           </button>
