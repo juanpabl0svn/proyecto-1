@@ -37,6 +37,7 @@ export default function UserProvider({
 
   useEffect(() => {
     if (user) {
+      console.log(user)
       dispatch({ type: "LOG_IN", payload: user });
     }
   }, []);

@@ -10,9 +10,10 @@ import Modal from "./modal";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
-  const { isLoggedIn, logOut } = useUserContext();
+  const { isLoggedIn, logOut, user } = useUserContext();
 
   const [showLogin, setShowLogin] = useState(false);
+
 
   const path = usePathname();
 
@@ -95,6 +96,17 @@ export default function Header() {
             >
               Calendario
             </Link>
+
+            {user?.isAdmin && (
+              <Link
+                className={`text-gray-600 ${
+                  path === "/stastics" ? "underline" : ""
+                }`}
+                href="/stastics"
+              >
+                Estadísticas
+              </Link>
+            )}
           </nav>
           <section className="flex items-center justify-end mr-2 flex-grow gap-3">
             <Link

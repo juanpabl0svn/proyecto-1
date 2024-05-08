@@ -132,7 +132,7 @@ export default function Members() {
           );
         })
       ) : user?.family ? (
-        <p>No hay usuarios</p>
+        <p>Cargando ...</p>
       ) : (
         <CreateFamilyGroup />
       )}
@@ -152,6 +152,7 @@ export default function Members() {
                 phone_number: "",
                 family: user?.family!,
                 nit: "",
+                isAdmin: false,
               },
             ])
           }
