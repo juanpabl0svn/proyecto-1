@@ -44,7 +44,9 @@ export default function CreateFamilyGroup() {
       createFamily(data?.id_family);
     } catch (error) {
       console.log(error);
-      toast.error("Algo salió mal");
+      toast.error("Algo salió mal",{
+        position: 'bottom-center'
+      });
     }
   };
 

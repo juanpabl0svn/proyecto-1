@@ -87,6 +87,14 @@ export default function Header() {
                 >
                   Miembros
                 </Link>
+                <Link
+                  className={`text-gray-600 ${
+                    path === "/prizes" ? "underline" : ""
+                  }`}
+                  href="/prizes"
+                >
+                  Premios
+                </Link>
               </>
             )}
             <Link

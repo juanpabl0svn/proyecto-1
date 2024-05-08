@@ -81,9 +81,13 @@ export default function Members() {
 
           const newMembers = users.with(index, user);
           setUsers(newMembers);
-          toast.success("Usuario editado correctamente");
+          toast.success("Usuario editado correctamente",{
+            position: 'bottom-center'
+          });
         } catch (error) {
-          toast.error("Error al editar el usuario");
+          toast.error("Error al editar el usuario",{
+            position: 'bottom-center'
+          });
         }
 
         return true;
@@ -107,9 +111,13 @@ export default function Members() {
         try {
           await supabase.from("users").delete().eq("id_user", user.id_user);
           setUsers(newMembers);
-          toast.success("Usuario eliminado correctamente");
+          toast.success("Usuario eliminado correctamente",{
+            position: 'bottom-center'
+          });
         } catch (error) {
-          toast.error("Error al eliminar el usuario");
+          toast.error("Error al eliminar el usuario",{
+            position: 'bottom-center'
+          });
         }
       }
     });

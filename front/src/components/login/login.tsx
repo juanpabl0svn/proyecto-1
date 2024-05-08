@@ -38,11 +38,15 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
 
       document.cookie = `comultrasan=${data.id_user}`;
 
-      toast.success(`Bienvenido ${data.name}`);
+      toast.success(`Bienvenido ${data.name}`,{
+        position: 'bottom-center'
+      });
 
       hiddeModal(onClick);
     } catch (error) {
-      toast.error("Usuario o contraseña incorrectos");
+      toast.error("Usuario o contraseña incorrectos",{
+        position: 'bottom-center'
+      });
       console.log(error);
     }
   };

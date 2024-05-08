@@ -32,7 +32,10 @@ export default function Register() {
         return toast.error(
           `El usuario ya existe con ese ${
             data.nit === userValue.nit ? "NIT" : "email"
-          }`
+          }`,
+          {
+            position: "bottom-center",
+          }
         );
       }
 
@@ -47,16 +50,24 @@ export default function Register() {
         .single();
 
       if (error2) {
-        return toast.error("Algo salió mal");
+        return toast.error("Algo salió mal", {
+          position: "bottom-center",
+        });
       }
 
       logIn(data2! as IUSER);
 
       document.cookie = `comultrasan=${data2?.id_user}`;
 
+      toast.success(`Bienvenido ${data2?.name}`, {
+        position: "bottom-center",
+      });
+
       router.replace("/");
     } catch (error) {
-      toast.error("Algo salió mal");
+      toast.error("Algo salió mal", {
+        position: "bottom-center",
+      });
     }
   };
 
