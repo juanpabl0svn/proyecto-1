@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { IUSER } from "@/models/types";
 import { createClient } from "@/utils/supabase/client";
 import toast from "react-hot-toast";
+import CreateFamilyGroup from "../create-family-group/create-family-group";
 
 export default function Members() {
   const { user } = useUserContext();
@@ -25,6 +26,8 @@ export default function Members() {
 
     (async () => {
       try {
+        if (!user?.family) return;
+
         const { data, error } = await supabase
           .from("users")
           .select()
@@ -128,8 +131,10 @@ export default function Members() {
             />
           );
         })
-      ) : (
+      ) : user?.family ? (
         <p>No hay usuarios</p>
+      ) : (
+        <CreateFamilyGroup />
       )}
 
       {isHead && (

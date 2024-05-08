@@ -11,6 +11,7 @@ export const INITIAL_STATE: {
   addMessage: (message: IMESSAGE) => void;
   logIn: (user: IUSER) => void;
   logOut: () => void;
+  createFamily: (family: number) => void;
 } = {
   user: null,
   isLoggedIn: false,
@@ -18,6 +19,7 @@ export const INITIAL_STATE: {
   addMessage: () => {},
   logIn: () => {},
   logOut: () => {},
+  createFamily: () => {},
 };
 
 const UserContext = createContext(INITIAL_STATE);
@@ -51,6 +53,9 @@ export default function UserProvider({
         },
         logOut() {
           dispatch({ type: "LOG_OUT" });
+        },
+        createFamily(family: number) {
+          dispatch({ type: "CREATE_FAMILY", payload: family });
         },
       }}
     >

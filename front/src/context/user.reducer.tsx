@@ -18,6 +18,16 @@ export default function UserReducer(
       };
     case "LOG_OUT":
       return INITIAL_STATE;
+    
+    case "CREATE_FAMILY":{
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          family: action.payload
+        }
+      }
+    }
     default:
       return state;
   }

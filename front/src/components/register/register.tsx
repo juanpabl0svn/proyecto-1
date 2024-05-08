@@ -3,9 +3,62 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import EyeOpen from "../global/svg/eye-open";
 import EyeClose from "../global/svg/eye-close";
+import { createClient } from "@/utils/supabase/client";
+import { useUserContext } from "@/context/user.context";
+import { IUSER } from "@/models/types";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
   const [viewPassword, setViewPassword] = useState(false);
+
+  const { logIn } = useUserContext();
+
+  const supabase = createClient();
+
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const userValue = Object.fromEntries(new FormData(e.currentTarget) as any);
+
+    try {
+      const { data } = await supabase
+        .from("users")
+        .select()
+        .or(`nit.eq.${userValue.nit},email.eq.${userValue.email}`)
+        .single();
+
+      if (data) {
+        return toast.error(
+          `El usuario ya existe con ese ${
+            data.nit === userValue.nit ? "NIT" : "email"
+          }`
+        );
+      }
+
+      await supabase.from("users").insert(userValue);
+
+      const { data: data2, error: error2 } = await supabase
+        .from("users")
+        .select()
+        .eq("email", userValue.email)
+        .eq("password", userValue.password)
+        .limit(1)
+        .single();
+
+      if (error2) {
+        return toast.error("Algo salió mal");
+      }
+
+      logIn(data2! as IUSER);
+
+      document.cookie = `comultrasan=${data2?.id_user}`;
+
+      router.replace("/");
+    } catch (error) {
+      toast.error("Algo salió mal");
+    }
+  };
 
   const noNumbersAllowed = (e: any) => {
     toast.remove();
@@ -26,7 +79,10 @@ export default function Register() {
 
   return (
     <aside className="fixed w-full min-h-dvh grid place-content-center">
-      <form className="mt-8 space-y-6 border border-black p-14 rounded-xl">
+      <form
+        className="mt-8 space-y-6 border border-black p-14 rounded-xl"
+        onSubmit={handleSubmit}
+      >
         <div className="rounded-md shadow-sm">
           <div>
             <input
