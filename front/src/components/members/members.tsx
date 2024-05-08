@@ -1,5 +1,3 @@
-"use client";
-
 import Swal from "sweetalert2";
 
 import Member from "./member/member";

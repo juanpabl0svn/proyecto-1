@@ -14,7 +14,6 @@ export default function Header() {
 
   const [showLogin, setShowLogin] = useState(false);
 
-
   const path = usePathname();
 
   const router = useRouter();
@@ -73,14 +72,22 @@ export default function Header() {
               Home
             </Link>
             {isLoggedIn && (
-              <Link
-                className={`text-gray-600 ${
-                  path === "/members" ? "underline" : ""
-                }`}
-                href="/members"
-              >
-                Miembros
-              </Link>
+              <>
+                <a
+                  href="https://torneoscomultrasan-altaircgs-projects.vercel.app/"
+                  target="__blank"
+                >
+                  Torneos
+                </a>
+                <Link
+                  className={`text-gray-600 ${
+                    path === "/members" ? "underline" : ""
+                  }`}
+                  href="/members"
+                >
+                  Miembros
+                </Link>
+              </>
             )}
             <Link
               className={`text-gray-600 ${path === "" ? "underline" : ""}`}
@@ -113,10 +120,12 @@ export default function Header() {
               className="inline-flex items-center space-x-2 text-sm font-medium text-gray-600 hover:underline"
               href="#"
             >
-              {isLoggedIn && <UserIcon className="w-4 h-4" />}
-              <span className="font-semibold tracking-tighter sm:hidden">
-                Account
-              </span>
+              {isLoggedIn && (
+                <>
+                  <UserIcon className="w-4 h-4" />
+                  <p>{user?.name}</p>
+                </>
+              )}
             </Link>
 
             <Button

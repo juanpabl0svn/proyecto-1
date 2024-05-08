@@ -3,6 +3,7 @@ import DeleteIcon from "@/components/icons/delete.icon";
 import { useState } from "react";
 import { IUSER } from "@/models/types";
 import Swal from "sweetalert2";
+import { useUserContext } from "@/context/user.context";
 
 export default function Member({
   user,
@@ -18,6 +19,8 @@ export default function Member({
   const [edit, setEdit] = useState(!user.id_user);
 
   const [currentUser, setCurrentUser] = useState<IUSER>(user);
+
+  const { user: userLoggedIn } = useUserContext();
 
   const handleEditProcess = async () => {
     if (!edit) {
@@ -35,7 +38,9 @@ export default function Member({
 
   return (
     <aside
-      className={`w-[95%] max-w-[800px] h-full shadow-xl border border-gray-400 rounded-xl p-9 flex gap-4 flex-wrap justify-center items-center relative bg-gray-300`}
+      className={`w-[95%] max-w-[800px] h-full shadow-xl border border-gray-400 rounded-xl p-9 flex gap-4 flex-wrap justify-center items-center relative ${
+        userLoggedIn?.id_user === user.id_user ? "bg-gray-400" : "bg-gray-300"
+      } `}
     >
       {isHead && (
         <>
@@ -45,10 +50,13 @@ export default function Member({
               edit ? "bg-white" : ""
             } `}
           />
-          <DeleteIcon
-            className="absolute right-5 top-2 cursor-pointer transition-all p-2 duration-200 ease-in-out hover:rotate-12 hover:bg-red-400 rounded-full"
-            onClick={() => handleDelete(user)}
-          />
+
+          {user.id_user !== userLoggedIn?.id_user && (
+            <DeleteIcon
+              className="absolute right-5 top-2 cursor-pointer transition-all p-2 duration-200 ease-in-out hover:rotate-12 hover:bg-red-400 rounded-full"
+              onClick={() => handleDelete(user)}
+            />
+          )}
         </>
       )}
       <article className="flex flex-col">

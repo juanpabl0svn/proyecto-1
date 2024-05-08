@@ -4,10 +4,13 @@ import { useUserContext } from "@/context/user.context";
 
 import { createClient } from "@/utils/supabase/client";
 
+
 import toast from "react-hot-toast";
 
 export default function LogIn({ onClick }: { onClick: () => void }) {
   const { logIn } = useUserContext();
+
+
 
   const supabase = createClient();
 
@@ -111,7 +114,7 @@ export default function LogIn({ onClick }: { onClick: () => void }) {
           <span className="text-gray-400">¿No tienes una cuenta?</span>
           <a
             className="font-medium text-indigo-500 hover:text-indigo-400 m-1"
-            href="#"
+            href="/register"
           >
             Registrate
           </a>
