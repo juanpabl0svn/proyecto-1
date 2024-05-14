@@ -11,7 +11,7 @@ export default function Body() {
         <section className="container grid items-center justify-center gap-4 px-4 py-12 md:py-24">
           <article className="space-y-4 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Bienvenido a Coop Comultrasan
+              Bienvenido a Coop Comultrasan ...
             </h1>
             <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
               Tu compañero de confianza en finanzas.{" "}
