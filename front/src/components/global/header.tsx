@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import FlagIcon from "../icons/flag.icon";
 import UserIcon from "../icons/user.icon";
 import { useUserContext } from "@/context/user.context";
 import { useEffect, useState } from "react";
@@ -145,6 +144,17 @@ export default function Header() {
             >
               {isLoggedIn ? "Log Out" : "Log In"}
             </Button>
+            {!isLoggedIn && (
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={(e) => {
+                  if (path === "/register") return;
+                  router.push("/register")}}
+              >
+                Register
+              </Button>
+            )}
           </section>
         </div>
       </header>
