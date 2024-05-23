@@ -150,6 +150,7 @@ export default function Header() {
             <Button
               size="sm"
               variant="outline"
+              id="login"
               onClick={(e) =>
                 !isLoggedIn ? setShowLogin(true) : handleLogOut()
               }
