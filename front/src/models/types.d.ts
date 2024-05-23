@@ -7,7 +7,7 @@ export interface IUSER {
   phone_number: string;
   family: number | null;
   nit: string;
-  isAdmin: boolean;
+  is_admin: boolean;
 }
 
 export interface IMESSAGE {

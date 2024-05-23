@@ -70,14 +70,16 @@ export default function Header() {
             >
               Home
             </Link>
+            <Link
+              className={`text-gray-600 ${
+                path === "/tournaments" ? "underline" : ""
+              }`}
+              href="/tournaments"
+            >
+              Torneos
+            </Link>
             {isLoggedIn && (
               <>
-                <a
-                  href="https://torneoscomultrasan-altaircgs-projects.vercel.app/"
-                  target="__blank"
-                >
-                  Torneos
-                </a>
                 <Link
                   className={`text-gray-600 ${
                     path === "/members" ? "underline" : ""
@@ -111,15 +113,25 @@ export default function Header() {
               Calendario
             </Link>
 
-            {user?.isAdmin && (
-              <Link
-                className={`text-gray-600 ${
-                  path === "/stastics" ? "underline" : ""
-                }`}
-                href="/stastics"
-              >
-                Estadísticas
-              </Link>
+            {user?.is_admin && (
+              <>
+                <Link
+                  className={`text-gray-600 ${
+                    path === "/stastics" ? "underline" : ""
+                  }`}
+                  href="/tournaments-manager"
+                >
+                  Administrar torneos
+                </Link>
+                <Link
+                  className={`text-gray-600 ${
+                    path === "/stastics" ? "underline" : ""
+                  }`}
+                  href="/stastics"
+                >
+                  Estadísticas
+                </Link>
+              </>
             )}
           </nav>
           <section className="flex items-center justify-end mr-2 flex-grow gap-3">
@@ -150,7 +162,8 @@ export default function Header() {
                 variant="outline"
                 onClick={(e) => {
                   if (path === "/register") return;
-                  router.push("/register")}}
+                  router.push("/register");
+                }}
               >
                 Register
               </Button>

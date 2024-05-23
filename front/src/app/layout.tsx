@@ -36,7 +36,10 @@ export default async function RootLayout({
       .limit(1)
       .single();
 
+      // TODO: Traer torneos del usuario
+
     user = data;
+    user.tournaments = []
   } catch (error) {
     console.log(error);
   }
