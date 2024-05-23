@@ -1,5 +1,7 @@
 "use client";
-import { useRef } from "react";
+
+import { createClient } from "@/utils/supabase/client";
+import { useRef, useEffect, useState } from "react";
 
 const MONTHS = [
   "Enero",
@@ -16,8 +18,25 @@ const MONTHS = [
   "Diciembre",
 ];
 
+const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+const getDaysInMonth = (month: number, year: number): number => {
+  if (month == 2) {
+    return year % 4 == 0 ? 29 : DAYS[month];
+  }
+  return DAYS[month];
+};
+
 export default function Calendar() {
   const { current: date } = useRef(new Date());
+
+  const [events, setEvents] = useState([]);
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    (async () => {})();
+  }, []);
 
   return (
     <aside className="mt-28">
@@ -25,18 +44,26 @@ export default function Calendar() {
         {MONTHS[date.getMonth()]} {date.getFullYear()}
       </h1>
       <article className="grid grid-cols-7 mx-auto text-center w-[clamp(700px,80vw,1100px)] mb-10">
-        <p>Monday</p>
-        <p>Tuesday</p>
-        <p>Wednesday</p>
-        <p>Thursday</p>
-        <p>Friday</p>
-        <p>Saturday</p>
-        <p>Sunday</p>
+        <p>Lunes</p>
+        <p>Martes</p>
+        <p>Miercoles</p>
+        <p>Jueves</p>
+        <p>Viernes</p>
+        <p>Sabado</p>
+        <p>Domingo</p>
       </article>
       <article className="grid grid-cols-7 mx-auto  w-[clamp(700px,80vw,1100px)]">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: date.getDay() + 1 }).map((_, i) => (
           <div
-            className={`w-full aspect-square border border-black dark:border-white pl-1 pt-1 ${
+            key={i}
+            className="w-full aspect-square border bg-gray-100 border-black  pl-1 pt-1"
+          ></div>
+        ))}
+        {Array.from({
+          length: getDaysInMonth(date.getMonth(), date.getFullYear()),
+        }).map((_, i) => (
+          <div
+            className={`w-full aspect-square border border-black pl-1 pt-1 ${
               date.getDate() === i + 1 ? "bg-gray-300" : ""
             }`}
             key={i}
