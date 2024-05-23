@@ -158,7 +158,7 @@ export default function Members() {
                 phone_number: "",
                 family: user?.family!,
                 nit: "",
-                isAdmin: false,
+                is_admin: false,
               },
             ])
           }
