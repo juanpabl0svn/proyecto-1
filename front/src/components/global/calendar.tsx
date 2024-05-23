@@ -88,7 +88,7 @@ export default function Calendar() {
       <article className="grid grid-cols-7 mx-auto  w-[clamp(700px,80vw,1100px)]">
         {Array.from({ length: date.getDay() + 1 }).map((_, i) => (
           <div
-            key={i}
+            key={crypto.randomUUID()}
             className="w-full aspect-square border bg-gray-100 border-black  pl-1 pt-1"
           ></div>
         ))}
@@ -108,7 +108,7 @@ export default function Calendar() {
               className={`w-full aspect-square border border-black pl-1 pt-1 ${
                 date.getDate() === i + 1 ? "bg-gray-400 text-white" : ""
               }`}
-              key={currentDate}
+              key={crypto.randomUUID()}
             >
               <p>{i + 1}</p>
               <ul className="flex felx-col flex-wrap break-words gap-3">
