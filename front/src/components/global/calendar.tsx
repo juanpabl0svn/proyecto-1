@@ -111,15 +111,15 @@ export default function Calendar() {
               key={currentDate}
             >
               <p>{i + 1}</p>
-              {thereIsAnEvent &&
-                thereIsAnEvent?.map((event: any) => (
-                  <ul className="">
+              <ul className="flex felx-col flex-wrap break-words gap-3">
+                {thereIsAnEvent &&
+                  thereIsAnEvent?.map((event: any) => (
                     <li className="cursor-pointer flex items-center gap-1">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>{" "}
-                      {event.title}
+                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                      <p>{event.title}</p>
                     </li>
-                  </ul>
-                ))}
+                  ))}
+              </ul>
             </div>
           );
         })}
