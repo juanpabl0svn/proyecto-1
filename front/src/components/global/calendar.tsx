@@ -88,7 +88,7 @@ export default function Calendar() {
       <article className="grid grid-cols-7 mx-auto  w-[clamp(700px,80vw,1100px)]">
         {Array.from({ length: date.getDay() + 1 }).map((_, i) => (
           <div
-            key={crypto.randomUUID()}
+            key={i}
             className="w-full aspect-square border bg-gray-100 border-black  pl-1 pt-1"
           ></div>
         ))}
@@ -108,13 +108,13 @@ export default function Calendar() {
               className={`w-full aspect-square border border-black pl-1 pt-1 ${
                 date.getDate() === i + 1 ? "bg-gray-400 text-white" : ""
               }`}
-              key={crypto.randomUUID()}
+              key={currentDate}
             >
               <p>{i + 1}</p>
               <ul className="flex felx-col flex-wrap break-words gap-3">
                 {thereIsAnEvent &&
                   thereIsAnEvent?.map((event: any) => (
-                    <li className="cursor-pointer flex items-center gap-1">
+                    <li key={event.id_tournament} className="cursor-pointer flex items-center gap-1">
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                       <p>{event.title}</p>
                     </li>
