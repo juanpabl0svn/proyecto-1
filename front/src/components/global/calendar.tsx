@@ -30,12 +30,45 @@ const getDaysInMonth = (month: number, year: number): number => {
 export default function Calendar() {
   const { current: date } = useRef(new Date());
 
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<any>([]);
 
   const supabase = createClient();
 
   useEffect(() => {
-    (async () => {})();
+    (async () => {
+      const year = date.getFullYear();
+      const month = date.getMonth(); // 0-indexed
+
+      const startDate = new Date(year, month, 1).toISOString();
+      const endDate = new Date(year, month + 1, 1).toISOString();
+
+      const { data, error } = await supabase
+        .from("tournaments")
+        .select("*")
+        .gte("date_end", startDate)
+        .lt("date_end", endDate);
+
+      if (error) {
+        console.error("Error fetching tournaments:", error);
+        return;
+      }
+
+      const eventsGroupedByDay = data?.reduce(
+        (acc: Record<string, any>, event: any) => {
+          const day = event.date_end.toString();
+          if (!acc[day]) {
+            acc[day] = [];
+          }
+          acc[day].push(event);
+          return acc;
+        },
+        {}
+      );
+
+      console.log(eventsGroupedByDay);
+
+      setEvents(eventsGroupedByDay as any);
+    })();
   }, []);
 
   return (
@@ -61,23 +94,35 @@ export default function Calendar() {
         ))}
         {Array.from({
           length: getDaysInMonth(date.getMonth(), date.getFullYear()),
-        }).map((_, i) => (
-          <div
-            className={`w-full aspect-square border border-black pl-1 pt-1 ${
-              date.getDate() === i + 1 ? "bg-gray-300" : ""
-            }`}
-            key={i}
-          >
-            <p>{i + 1}</p>
-            {(i == 5 || i == 10 || i == 14 || i == 24 || i == 29) && (
-              <ul className="">
-                <li className="cursor-pointer flex items-center gap-1">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div> Event
-                </li>
-              </ul>
-            )}
-          </div>
-        ))}
+        }).map((_, i) => {
+          const currentDate = `${date.getFullYear()}-${
+            date.getMonth() + 1 < 10
+              ? "0" + (date.getMonth() + 1)
+              : date.getMonth() + 1
+          }-${i + 1}`;
+
+          const thereIsAnEvent = events[currentDate];
+
+          return (
+            <div
+              className={`w-full aspect-square border border-black pl-1 pt-1 ${
+                date.getDate() === i + 1 ? "bg-gray-400 text-white" : ""
+              }`}
+              key={currentDate}
+            >
+              <p>{i + 1}</p>
+              {thereIsAnEvent &&
+                thereIsAnEvent?.map((event: any) => (
+                  <ul className="">
+                    <li className="cursor-pointer flex items-center gap-1">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>{" "}
+                      {event.title}
+                    </li>
+                  </ul>
+                ))}
+            </div>
+          );
+        })}
       </article>
       <article></article>
     </aside>
