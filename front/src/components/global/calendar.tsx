@@ -72,7 +72,7 @@ export default function Calendar() {
   }, []);
 
   return (
-    <aside className="mt-28">
+    <aside className="py-28">
       <h1 className="text-center text-2xl my-10">
         {MONTHS[date.getMonth()]} {date.getFullYear()}
       </h1>
@@ -105,16 +105,19 @@ export default function Calendar() {
 
           return (
             <div
-              className={`w-full aspect-square border border-black pl-1 pt-1 ${
+              className={`w-full aspect-square overflow-y-auto overflow-x-hidden border border-black pl-1 pt-1 ${
                 date.getDate() === i + 1 ? "bg-gray-400 text-white" : ""
               }`}
               key={currentDate}
             >
               <p>{i + 1}</p>
-              <ul className="flex felx-col flex-wrap break-words gap-3">
+              <ul className="flex felx-col flex-wrap break-words gap-3 ">
                 {thereIsAnEvent &&
                   thereIsAnEvent?.map((event: any) => (
-                    <li key={event.id_tournament} className="cursor-pointer flex items-center gap-1">
+                    <li
+                      key={event.id_tournament}
+                      className="cursor-pointer flex items-center gap-1"
+                    >
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                       <p>{event.title}</p>
                     </li>

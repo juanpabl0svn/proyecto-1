@@ -44,7 +44,7 @@ export default function Tournaments() {
         return (
           <section
             key={tournament.id}
-            className="w-[600px] p-4 border border-black rounded-sm bg-white"
+            className="w-[600px] aspect-square p-4 border border-black rounded-sm bg-white"
           >
             <img src="/tournament.png" alt="" />
             <h2 className="text-2xl font-bold">{tournament.title}</h2>

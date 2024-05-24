@@ -54,10 +54,9 @@ export default function ChatBot() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className=""
+          className="sr stroke-slate-600"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
-          stroke="#597e8d"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"

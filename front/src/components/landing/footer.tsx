@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-700 body-font">
+    <footer className="bg-gray-500 body-font">
       <div className="container grid items-center justify-center gap-4 px-4 py-12 md:py-24">
         <div className="space-y-4 text-center">
           <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
             Grupos familiares
           </h2>
-          <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+          <p className="mx-auto max-w-[600px] text-gray-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
             Ingresa con tu grupo familiar y disfruta de los beneficios especiales, solo para ti, tampoco te pierdas de rifas, sorteos y mucho más.
           </p>
         </div>
@@ -34,7 +34,7 @@ export default function Footer() {
             Privacy Policy
           </Link>
         </div>
-        <p className="mx-auto max-w-[600px] text-center text-gray-500 text-xs dark:text-gray-400">
+        <p className="mx-auto max-w-[600px] text-center text-gray-100 text-xs">
           © 2023 Coop Comultrasan. All rights reserved.
         </p>
       </div>
