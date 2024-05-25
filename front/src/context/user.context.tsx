@@ -3,6 +3,8 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import UserReducer from "./user.reducer";
 import { IMESSAGE, IUSER } from "@/models/types";
+import Swal from "sweetalert2";
+
 
 export const INITIAL_STATE: {
   user: IUSER | null;
@@ -37,7 +39,6 @@ export default function UserProvider({
 
   useEffect(() => {
     if (user) {
-      console.log(user)
       dispatch({ type: "LOG_IN", payload: user });
     }
   }, []);

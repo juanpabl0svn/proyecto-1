@@ -53,21 +53,15 @@ export default function Calendar() {
         return;
       }
 
-      const eventsGroupedByDay = data?.reduce(
-        (acc: Record<string, any>, event: any) => {
-          const day = event.date_end.toString();
-          if (!acc[day]) {
-            acc[day] = [];
-          }
-          acc[day].push(event);
-          return acc;
-        },
-        {}
-      );
+      const events: [any] = Array.from({ length: 31 }).fill([]) as any;
 
-      console.log(eventsGroupedByDay);
+      for (let i = 0; i < data.length; i++) {
+        const [_, __, day] = data[i].date_end.split("-") as [any, number, any];
 
-      setEvents(eventsGroupedByDay as any);
+        events[+day - 1] = [...events[+day - 1], data[i]];
+      }
+
+      setEvents(events as any);
     })();
   }, []);
 
@@ -95,20 +89,15 @@ export default function Calendar() {
         {Array.from({
           length: getDaysInMonth(date.getMonth(), date.getFullYear()),
         }).map((_, i) => {
-          const currentDate = `${date.getFullYear()}-${
-            date.getMonth() + 1 < 10
-              ? "0" + (date.getMonth() + 1)
-              : date.getMonth() + 1
-          }-${i + 1}`;
-
-          const thereIsAnEvent = events[currentDate];
+          const thereIsAnEvent = events[i];
+          console.log(thereIsAnEvent);
 
           return (
             <div
               className={`w-full aspect-square overflow-y-auto overflow-x-hidden border border-black pl-1 pt-1 ${
                 date.getDate() === i + 1 ? "bg-gray-400 text-white" : ""
               }`}
-              key={currentDate}
+              key={i}
             >
               <p>{i + 1}</p>
               <ul className="flex felx-col flex-wrap break-words gap-3 ">

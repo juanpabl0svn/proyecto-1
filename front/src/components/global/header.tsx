@@ -57,7 +57,7 @@ export default function Header() {
       )}
       <header
         id="header"
-        className="fixed w-full transition-all duration-300 ease-in-out top-0 z-10"
+        className="fixed w-full transition-all duration-300 ease-in-out top-0 z-10 text-center"
       >
         <div className="bg-white flex justify-end relative h-24 shadow-lg">
           <Link className="flex items-center flex-grow" href="/">
