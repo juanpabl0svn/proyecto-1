@@ -99,8 +99,8 @@ export default function Header() {
               </>
             )}
             <Link
-              className={`text-gray-600 ${path === "" ? "underline" : ""}`}
-              href={path === "" ? "/?id=convenios" : "/#convenios"}
+              className={`text-gray-600 `}
+              href={path === "/" ? "/#convenios" : "/?id=convenios"}
             >
               Convenios
             </Link>
@@ -117,7 +117,7 @@ export default function Header() {
               <>
                 <Link
                   className={`text-gray-600 ${
-                    path === "/stastics" ? "underline" : ""
+                    path === "/tournaments-manager" ? "underline" : ""
                   }`}
                   href="/tournaments-manager"
                 >
