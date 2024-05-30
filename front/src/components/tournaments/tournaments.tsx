@@ -12,6 +12,12 @@ export default function Tournaments() {
 
   const [isInTournament, setIsInTournament] = useState<any>({});
 
+  const filter = [...tournaments].filter(
+    (tournaments) => isInTournament[tournaments.id_tournament]
+  );
+
+  const [filterTournaments, setFilterTournaments] = useState<any>(false);
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
@@ -21,7 +27,7 @@ export default function Tournaments() {
     const tournament = document.getElementById(id) as HTMLElement;
 
     if (tournament) {
-      tournament.scrollIntoView({ behavior: "smooth", block: "center"});
+      tournament.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [tournaments]);
 
@@ -75,7 +81,17 @@ export default function Tournaments() {
 
   return (
     <main className="pt-28 flex justify-center gap-4 flex-wrap bg-gray-300 min-h-dvh h-full pb-10">
-      {tournaments.map((tournament: any) => {
+      {isLoggedIn && (
+        <button
+          className={`fixed top-32 right-16 px-4 py-2 rounded-md border border-gray-400 ${
+            filterTournaments ? "bg-white" : "bg-gray-400 text-white"
+          }`}
+          onClick={() => setFilterTournaments(!filterTournaments)}
+        >
+          Mis torneos
+        </button>
+      )}
+      {(filterTournaments ? filter : tournaments).map((tournament: any) => {
         return (
           <section
             key={tournament.id_tournament}
