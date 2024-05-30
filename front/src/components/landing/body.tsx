@@ -1,10 +1,26 @@
+'use client'
+
 import Link from "next/link";
 import DollarSignIcon from "../icons/dolar.icon";
 import CreditCardIcon from "../icons/credit-card.icon";
 import FileArchiveIcon from "../icons/file-archive.icon";
 import BarChartIcon from "../icons/bar-char.icon";
 
+import { useEffect } from "react";
+
 export default function Body() {
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (!id) return;
+
+    const convenios = document.getElementById(id) as HTMLElement;
+
+    if (convenios) {
+      convenios.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, []);
   return (
     <main className="flex-1 mt-10">
       <aside className="bg-gray-100 dark:bg-gray-800">

@@ -100,7 +100,7 @@ export default function Header() {
             )}
             <Link
               className={`text-gray-600 ${path === "" ? "underline" : ""}`}
-              href="/#convenios"
+              href={path === "" ? "/?id=convenios" : "#convenios"}
             >
               Convenios
             </Link>

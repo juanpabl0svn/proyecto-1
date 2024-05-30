@@ -1,6 +1,7 @@
 "use client";
 
 import { createClient } from "@/utils/supabase/client";
+import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
 const MONTHS = [
@@ -90,7 +91,6 @@ export default function Calendar() {
           length: getDaysInMonth(date.getMonth(), date.getFullYear()),
         }).map((_, i) => {
           const thereIsAnEvent = events[i];
-          console.log(thereIsAnEvent);
 
           return (
             <div
@@ -103,13 +103,14 @@ export default function Calendar() {
               <ul className="flex felx-col flex-wrap break-words gap-3 ">
                 {thereIsAnEvent &&
                   thereIsAnEvent?.map((event: any) => (
-                    <li
+                    <Link
+                      href={`/tournaments?id=${event.id_tournament}`}
                       key={event.id_tournament}
                       className="cursor-pointer flex items-center gap-1"
                     >
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                       <p>{event.title}</p>
-                    </li>
+                    </Link>
                   ))}
               </ul>
             </div>

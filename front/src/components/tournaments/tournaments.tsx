@@ -13,6 +13,19 @@ export default function Tournaments() {
   const [isInTournament, setIsInTournament] = useState<any>({});
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (!id) return;
+
+    const tournament = document.getElementById(id) as HTMLElement;
+
+    if (tournament) {
+      tournament.scrollIntoView({ behavior: "smooth", block: "center"});
+    }
+  }, [tournaments]);
+
+  useEffect(() => {
     (async () => {
       const { data, error } = await supabase.from("tournaments").select("*");
 
@@ -66,11 +79,11 @@ export default function Tournaments() {
         return (
           <section
             key={tournament.id_tournament}
+            id={tournament.id_tournament}
             className="w-[600px] aspect-square p-4 border border-black rounded-sm bg-white"
           >
             <img src="/tournament.png" alt="" />
             <h2 className="text-2xl font-bold">{tournament.title}</h2>
-            <p>{tournament.id_tournament}</p>
 
             <article className="flex w-full justify-between px-4">
               <div>
@@ -94,7 +107,9 @@ export default function Tournaments() {
                     : "Inscribirme"}
                 </button>
                 {isInTournament[tournament.id_tournament] && (
-                  <span className="text-sm text-gray-400">Oprima para desinscribir</span>
+                  <span className="text-sm text-gray-400">
+                    Oprima para desinscribir
+                  </span>
                 )}
               </div>
             </article>
